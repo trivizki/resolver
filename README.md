@@ -3,7 +3,8 @@ University project
 
 # Installation
 
-** For Developers **
+**For Developers**
+
 Creating your GOPATH directory.
 
 1. `mkdir -p $HOME/go/src`
