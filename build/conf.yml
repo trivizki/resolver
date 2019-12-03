@@ -1,0 +1,27 @@
+LoggerConf:
+    LogFile: "log.text"
+
+MySqlConf:
+    ConnectionString: "root:root@tcp(localhost)/resolver?timeout=10s&readTimeout=1s&writeTimeout=1s"
+    MySqlTableName: "tracking"
+
+DomainLearnerConf:
+    Period: "10m"
+    MinAmount: 4
+    CacheExpiration: "30m"
+
+InjectionConf:
+    SnifferConf:
+        Device: "wlp3s0"
+        Filter: "ip and udp dst port 53"
+    InjectorConf:
+        Device: "wlp3s0"
+
+MaintananceConf:
+    Period: "10m"
+    MaxLastQuery: "-30m"
+
+UserLearnerConf:
+    SnifferConf:
+        Device: "wlp3s0"
+        Filter: "ip and udp dst port 53"
