@@ -4,19 +4,25 @@ University project
 # Installation
 
 ** For Developers **
-1. `mkdir -p $HOME/go/src`
-
 Creating your GOPATH directory.
 
+1. `mkdir -p $HOME/go/src`
+
 2. `cd $HOME/go/src`
-3. `git clone https://github.com/trivizki/resolver.git`
 
 Clone this repo into your GOPATH.
 
-4. `chmod +x ./install.sh`
-5. `./install.sh`
+3. `git clone https://github.com/trivizki/resolver.git`
+
+4. `sudo chmod +x ./install.sh`
 
 Run the installation script.
+
+5. `sudo ./install.sh`
+
+Return user permissions
+
+6. `sudo chown -R USER:USER ~`
 
 6. Start Develop
 
@@ -24,4 +30,4 @@ Run the installation script.
 
 1. Compile using:
 `make build`
-2. Run the binary **With Sudo** `sudo cmd/resolver`
+2. Run the binary **With Sudo** `sudo build/resolver`
