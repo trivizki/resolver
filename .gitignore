@@ -16,3 +16,4 @@
 
 # Project executable
 /build/resolver
+/cmd/resolver
