@@ -10,7 +10,7 @@ import (
 )
 
 func TestBuildPacket(t *testing.T){
-	p, _ := hex.DecodeString("f0d5bf41eba0a0ab1b571a2408000500005a000040004011f73ac0a80101c0a801070035d9f700464b7ff637818000010001000000000377777706676f6f676c6503636f6d00000100010377777706676f6f676c6503636f6d0000010001000000140004acd91664")
+	p, _ := hex.DecodeString("f0d5bf41eba0a0ab1b571a2408004500005a000040004011b73ac0a80101c0a801070035d9f700464b7ff637818000010001000000000377777706676f6f676c6503636f6d00000100010377777706676f6f676c6503636f6d0000010001000000140004acd91664")
 	tests := []struct{
 		srcMac net.HardwareAddr
 		dstMac net.HardwareAddr
@@ -42,7 +42,8 @@ func TestBuildPacket(t *testing.T){
 										test.srcPort, test.dstPort, test.dnsRequest,
 											test.answers)
 		if (bytes.Compare(r,test.packet) != 0){
-			t.Errorf("got different packet\n %s", hex.Dump(r))
+			t.Errorf("got different packet\n %s\n", hex.Dump(r))
+			t.Errorf("want \n %s \n", hex.Dump(test.packet))
 		}
 		if (e != test.err){
 			t.Errorf("got different error")
