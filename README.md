@@ -17,15 +17,17 @@ Clone this repo into your GOPATH.
 
 4. `sudo chmod +x ./install.sh`
 
+5. `cd $HOME/go/src/resolver`
+
 Run the installation script.
 
-5. `sudo ./install.sh`
+6. `sudo ./install.sh`
 
 Return user permissions
 
-6. `sudo chown -R USER:USER ~`
+7. `sudo chown -R USER:USER ~`
 
-6. Start Develop
+8. Start Develop
 
 # Runnig
 
