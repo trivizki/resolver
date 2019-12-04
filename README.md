@@ -5,6 +5,10 @@ University project
 
 **For Developers**
 
+Install git
+
+0. `sudo apt install git`
+
 Creating your GOPATH directory.
 
 1. `mkdir -p $HOME/go/src`
@@ -15,9 +19,9 @@ Clone this repo into your GOPATH.
 
 3. `git clone https://github.com/trivizki/resolver.git`
 
-4. `sudo chmod +x ./install.sh`
+4. `cd $HOME/go/src/resolver`
 
-5. `cd $HOME/go/src/resolver`
+5. `sudo chmod +x ./install.sh`
 
 Run the installation script.
 
@@ -31,6 +35,9 @@ Return user permissions
 
 # Runnig
 
-1. Compile using:
-`make build`
+Compile
+1. `make build`
+
+2. configure `build/conf.yml` according to your device (pay attention to network interface's names).
+
 2. Run the binary **With Sudo** `sudo build/resolver`
