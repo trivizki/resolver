@@ -16,7 +16,7 @@ clean:
 	$(GOCLEAN)
 	rm -f $(BINARY_NAME)
 run:
-	$(GOBUILD) -o $(BINARY_NAME) $(MAIN) ./...
-	./$(BINARY_NAME)
+	$(GOBUILD) -o $(BINARY_NAME) $(MAIN)
+	(cd build && ./resolver)
 
 .PHONY: all test build run clean
