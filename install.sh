@@ -2,12 +2,6 @@
 apt-get update
 apt-get install golang-go
 
-# Install git
-apt-get install git
-
-# Install vim
-apt-get install vim
-
 # Getting dependencies
 apt-get install libpcap-dev
 
