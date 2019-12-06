@@ -54,6 +54,9 @@ func NewContextBuilder() *ContextBuilder {
 	Basiclly this function parse udp packet.
 */
 func (cb *ContextBuilder) BuildContext (packet gopacket.Packet) (*Context, error){
+	if (packet == nil){
+		return nil, fmt.Errorf("got nil packet")
+	}
 	c := &Context{}
 	c.Timestamp = packet.Metadata().CaptureInfo.Timestamp
 
