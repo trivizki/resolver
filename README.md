@@ -31,7 +31,7 @@ Return user permissions
 
 7. `sudo chown -R USER:USER ~`
 
-8. Start Develop
+8. Start Develop.
 
 # Runnig
 
@@ -40,4 +40,6 @@ Compile
 
 2. configure `build/conf.yml` according to your device (pay attention to network interface's names).
 
-2. Run the binary **With Sudo** `sudo build/resolver`
+Run the binary.
+
+3. `make run`
