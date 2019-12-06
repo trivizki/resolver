@@ -65,7 +65,7 @@ func (s *Sniffer) Sniff(){
 		packet, err := packetSource.NextPacket()
 		if err != nil {
 			fmt.Printf("ERROR!! %s\n", err.Error())
-			break
+			continue	
 		}
 		s.packetChannel <- packet
 	}
