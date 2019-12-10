@@ -15,6 +15,8 @@ test:
 clean: 
 	$(GOCLEAN)
 	rm -f $(BINARY_NAME)
+	rm -f build/log.text
+	rm -f cmd/resolver/resolver
 run:
 	$(GOBUILD) -o $(BINARY_NAME) $(MAIN)
 	(cd build && ./resolver)
