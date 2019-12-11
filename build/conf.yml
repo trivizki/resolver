@@ -12,10 +12,10 @@ DomainLearnerConf:
 
 InjectionConf:
     SnifferConf:
-        Device: "wlp3s0"
+        Device: "ens33"
         Filter: "ip and udp dst port 53"
     InjectorConf:
-        Device: "wlp3s0"
+        Device: "ens33"
 
 MaintananceConf:
     Period: "10m"
@@ -23,5 +23,5 @@ MaintananceConf:
 
 UserLearnerConf:
     SnifferConf:
-        Device: "wlp3s0"
+        Device: "ens33"
         Filter: "ip and udp dst port 53"
