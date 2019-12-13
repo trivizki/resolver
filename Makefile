@@ -19,6 +19,6 @@ clean:
 	rm -f cmd/resolver/resolver
 run:
 	$(GOBUILD) -o $(BINARY_NAME) $(MAIN)
-	(cd build && ./resolver)
+	(cd build && sudo ./resolver)
 
 .PHONY: all test build run clean
