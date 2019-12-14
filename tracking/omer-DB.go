@@ -16,16 +16,15 @@ type myDB struct{
 
 // 
 type DBTracker struct {
-	*MyDBTbleByTime [][]string
-	*MyDBTableByName [][]string
+	*MyDBTbleByTime [][2]string
+	*MyDBTableByName [][2]string
 	logger *logger.Logger
 }
 	
 //create new DBtracker object.
-func NewDBTracker(logger *logger.Logger, conf MYSQLConf) *DBTracker{
-	*MyDBTableByName = make([][]string, )
-	*MyDBTableByTime = make([][]string, )
-
+func NewDBTracker(logger *logger.Logger) *DBTracker{
+	*MyDBTableByName = make([][2]string, )
+	*MyDBTableByTime = make([][2]string, )
 }
 
 // Initialzie the Tracker object, i.e. connecting to DB
@@ -61,13 +60,13 @@ func (st *DBTracker ) RecordDomain(name string, timestamp time.Time) error {
 
 	func (st *MYSQLTracker) DeleteDomainByName(name string) error{
 		func SearchStrings(a []string, name string) int
-	}
+}
 
-	// Initiazlies the MYSQLTracker object. connect to the relevant MySql DB.
-	// NOTICE: user must call this function before using the Tracker.
+// Initiazlies the MYSQLTracker object. connect to the relevant MySql DB.
+// NOTICE: user must call this function before using the Tracker.
 
 	
-	func (st *MYSQLTracker) GetOldDomainsByDate(date time.Time)([]string, error){
+func (st *MYSQLTracker) GetOldDomainsByDate(date time.Time)([]string, error){
 		
 
 
