@@ -16,7 +16,7 @@ var (
 )
 
 type DomainLearnerConf struct {
-	Period time.Duration 
+	Period time.Duration // time between cycles.
 	MinAmount int
 	CacheExpiration time.Duration
 }
@@ -31,6 +31,7 @@ type DomainLearner struct {
 	conf DomainLearnerConf
 	// In order to notify the main when finish.
 	wg sync.WaitGroup
+	// notify injection and userLearner when starting a cycle.
 	notifyStartCycle chan<- struct{}
 	notifyFinishCycle chan<- struct{}
 }

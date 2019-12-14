@@ -113,6 +113,8 @@ func (i *Injection) pause(){
 	}
 }
 
+// handle one sniffed packet.
+// check whether we know the domain's ip, if we know - inject response.
 func (i *Injection) handlePacket(packet gopacket.Packet){
 		var err error
 		var context *context.Context

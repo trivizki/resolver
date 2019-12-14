@@ -17,8 +17,7 @@ var (
 	confPath string = "."
 )
 
-
-
+// The resolver main configuration struct.
 type Configuration struct {
 	LoggerConf logger.LoggerConf
 	MySqlConf tracking.MYSQLConf
@@ -28,6 +27,7 @@ type Configuration struct {
 	UserLearnerConf userLearning.UserLearnerConf
 }
 
+// This function is responsible to load the system configuration.
 func readConfiguration() (Configuration, error){
 	var conf Configuration
 	var err error
@@ -98,6 +98,7 @@ func main(){
 	go domainLearner.Learn()
 	go maintanance.Maintan()
 	go injection.Inject()
-	// Waiting for workers.
+
+	// we have to keep the main thread alive. 
 	wg.Wait()
 }

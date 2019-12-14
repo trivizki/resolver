@@ -18,7 +18,7 @@ func NewResolver() *Resolver{
 				d := net.Dialer{}
 				return d.DialContext(ctx, "udp", net.JoinHostPort("8.8.8.8", "53"))
 		},
-	}		
+	}
 	return &Resolver{
 		server : r,
 	}

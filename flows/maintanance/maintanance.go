@@ -56,6 +56,7 @@ func (dl *Maintanance) Maintan(){
 	dl.wg.Done()
 }
 
+// Delete the given domain from DB.
 func (dl *Maintanance) deleteDomains(domains []string){
 	var err error
 	for _, domain := range domains{
