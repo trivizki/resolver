@@ -27,11 +27,13 @@ type UserLearner struct {
 	tracker tracking.Tracker
 	logger *logger.Logger
 	wg sync.WaitGroup
+	notifyStartCycle <-chan struct{}
+	notifyFinishCycle <-chan struct{}
 }
 
 // create new user learner.
 // NOTICE: One has to call InitializeLearner function before start using an UserLearner object.
-func NewUserLearner(logger *logger.Logger, tracker tracking.Tracker, conf UserLearnerConf, wg sync.WaitGroup) *UserLearner{
+func NewUserLearner(logger *logger.Logger, tracker tracking.Tracker, conf UserLearnerConf, wg sync.WaitGroup, notifyStartCycle <-chan struct{}, notifyFinishCycle <-chan struct {}) *UserLearner{
 	packetChannel := make(chan gopacket.Packet, 30)
 	sniffer := sniffer.NewSniffer(packetChannel, conf.SnifferConf, logger)
 	contextBuilder := context.NewContextBuilder()
@@ -42,6 +44,8 @@ func NewUserLearner(logger *logger.Logger, tracker tracking.Tracker, conf UserLe
 		tracker : tracker,
 		logger : logger,
 		wg : wg,
+		notifyStartCycle : notifyStartCycle,
+		notifyFinishCycle : notifyFinishCycle,
 	}
 }
 
@@ -61,11 +65,36 @@ func (ul *UserLearner) InitializeLearner() error{
 // to call this function in diffrent thread (gorutine).
 func (ul *UserLearner) Learn(){
 	go ul.sniffer.Sniff()
-	for packet := range ul.packetChannel {
-		ul.handlePacket(packet)
-	}
+	ul.listen()
 	ul.wg.Done()
 }
+
+func (ul *UserLearner) listen(){
+	for {
+		select {
+		case packet := <- ul.packetChannel:
+				go ul.handlePacket(packet)
+			case <- ul.notifyStartCycle:
+				ul.logger.Debug(flowName, "action=pause")
+				ul.pause()
+		}
+	}
+
+}
+
+func (ul *UserLearner) pause(){
+	for {
+		select {
+			case <- ul.packetChannel:
+				continue
+			case <- ul.notifyFinishCycle:
+				ul.logger.Debug(flowName, "action=resume")
+				ul.listen()
+		}
+	}
+}
+
+
 
 // handle one sniffed packet.
 // buid context from packet, recording the query.

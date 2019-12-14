@@ -70,6 +70,7 @@ func (dl *DomainLearner) Learn(){
 	for _ = range ticker.C {
 		dl.logger.Debug(flowName, "action=start_cycle")
 		dl.notifyStartCycle <- struct{}{}
+		dl.notifyStartCycle <- struct{}{}
 		domains, err := dl.tracker.GetDomainsByAmount(dl.conf.MinAmount)
 		if err != nil{
 			//report
@@ -79,6 +80,7 @@ func (dl *DomainLearner) Learn(){
 		dl.logger.Debug(flowName, "action=got_domains, domains=%s", domains)
 		dl.learnDomains(domains)
 		dl.logger.Debug(flowName, "action=done_cycle")
+		dl.notifyFinishCycle <- struct{}{}
 		dl.notifyFinishCycle <- struct{}{}
 	}
 	dl.wg.Done()

@@ -70,7 +70,7 @@ func main(){
 	}
 
 	wg.Add(4)
-	learner := userLearning.NewUserLearner(logger, tracker, conf.UserLearnerConf, wg)
+	learner := userLearning.NewUserLearner(logger, tracker, conf.UserLearnerConf, wg, learningStartCycle, learningFinishCycle)
 	domainLearner := domainLearning.NewDomainLearner(logger, tracker, conf.DomainLearnerConf, wg, 
 		learningStartCycle, learningFinishCycle)
 	injection := injection.NewInjection(logger, conf.InjectionConf, wg,
